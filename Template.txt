@@ -1,0 +1,40 @@
+using Game.Util;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+
+namespace Game.GameConfig {
+
+    public class |configName| {
+||
+    }
+
+    public class |configsName| {
+
+        private static |configsName| instance;
+        public static |configsName| Instance {
+            get { return instance ?? ( instance = new |configsName|() ); }
+        }
+
+        private Dictionary<string, |configName|> |configDict| = new Dictionary<string, |configName|>();
+
+        public |configsName|() {
+            var confJObj = ConfigManager.Instance.GetDownloadConfByName( "|tableName|" );
+            var arr = JArray.FromObject( confJObj );
+            var count = arr.Count;
+            for( int i = 0; i < count; i++ ) {
+                var token = arr[i];
+                var data = new |configName|();
+                ParserHelper.ParseJsonAttributeProperity( data, token );
+                |configDict|.Add( data.ID, data );
+            }
+        }
+
+        public |configName| GetConfById(string id) {
+            |configName| conf;
+            if( |configDict|.TryGetValue( id, out conf ) )
+                return conf;
+            else
+                return null;
+        }
+    }
+}

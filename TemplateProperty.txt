@@ -1,0 +1,2 @@
+[JsonParser( "|jsonProp|" )]
+public |classPropType| |classProp| { get; set; }
