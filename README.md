@@ -3,6 +3,12 @@
 # excel2Class
 excel配置文件自动生成csharp脚本
 
+### 数据类型(右边是excel中填写的类型)
+string - string
+float - number
+int - integer
+bool - bool
+
 ### 生成工具
 将excel配置表格转换成csharp脚本
 Util中自带csharp解析json脚本
